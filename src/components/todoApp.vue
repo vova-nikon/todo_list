@@ -16,8 +16,9 @@
           </b-button>
         </b-col>
         <b-col cols="6" class="completed-not-number">
-          <p>Completed: {{ todosCompleted.length }}</p>
           <p>Not Completed: {{ todosNotCompleted.length }}</p>
+          <p>Completed: {{ todosCompleted.length }}</p>
+          <p>Total: {{ todosTotal.length }}</p>
         </b-col>
       </b-row>
 
@@ -160,6 +161,7 @@ export default {
       todos: [],
       todosCompleted: [],
       todosNotCompleted: [],
+      todosTotal: [],
       addTodoForm: {
         uid: Number,
         description: '',
@@ -184,11 +186,14 @@ export default {
       const todosToCount = this.todos;
       this.todosCompleted = [];
       this.todosNotCompleted = [];
+      this.todosTotal = [];
       todosToCount.forEach((element) => {
         if (element.is_completed.length > 0) {
           this.todosCompleted.push(1);
+          this.todosTotal.push(1);
         } else {
           this.todosNotCompleted.push(0);
+          this.todosTotal.push(0);
         }
       });
     },
